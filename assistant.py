@@ -2,23 +2,22 @@ from textwrap import dedent
 from phi.llm.groq import Groq
 from phi.assistant import Assistant
 
-
 def get_chunk_summarizer(
     model: str = "llama3-70b-8192",
     debug_mode: bool = True,
+    groq_api_key: str = None,  # Added parameter for API key
 ) -> Assistant:
     """Get a Groq Research Assistant."""
-
     return Assistant(
         name="groq_youtube_pre_processor",
-        llm=Groq(model=model),
+        llm=Groq(model=model, api_key=groq_api_key),  # Pass the API key here
         description="You are a Senior NYT Reporter tasked with summarizing a youtube video.",
         instructions=[
             "You will be provided with a youtube video transcript.",
-            "Carefully read the transcript a prepare thorough report of key facts and details.",
+            "Carefully read the transcript and prepare a thorough report of key facts and details.",
             "Provide as many details and facts as possible in the summary.",
-            "Your report will be used to generate a final New York Times worthy report.",
-            "Give the section relevant titles and provide details/facts/processes in each section."
+            "Your report will be used to generate a final New York Times-worthy report.",
+            "Give the section relevant titles and provide details/facts/processes in each section.",
             "REMEMBER: you are writing for the New York Times, so the quality of the report is important.",
             "Make sure your report is properly formatted and follows the <report_format> provided below.",
         ],
@@ -38,33 +37,31 @@ def get_chunk_summarizer(
         </report_format>
         """
         ),
-        # This setting tells the LLM to format messages in markdown
         markdown=True,
         add_datetime_to_instructions=True,
         debug_mode=debug_mode,
     )
 
-
 def get_video_summarizer(
     model: str = "llama3-70b-8192",
     debug_mode: bool = True,
+    groq_api_key: str = None,  # Added parameter for API key
 ) -> Assistant:
     """Get a Groq Research Assistant."""
-
     return Assistant(
         name="groq_video_summarizer",
-        llm=Groq(model=model),
+        llm=Groq(model=model, api_key=groq_api_key),  # Pass the API key here
         description="You are a Senior NYT Reporter tasked with writing a summary of a youtube video.",
         instructions=[
-            "You will be provided with:"
-            "  1. Youtube video link and information about the video"
-            "  2. Pre-processed summaries from junior researchers."
-            "Carefully process the information and think about the contents",
-            "Then generate a final New York Times worthy report in the <report_format> provided below.",
+            "You will be provided with:",
+            "  1. Youtube video link and information about the video",
+            "  2. Pre-processed summaries from junior researchers.",
+            "Carefully process the information and think about the contents.",
+            "Then generate a final New York Times-worthy report in the <report_format> provided below.",
             "Make your report engaging, informative, and well-structured.",
             "Break the report into sections and provide key takeaways at the end.",
             "Make sure the title is a markdown link to the video.",
-            "Give the section relevant titles and provide details/facts/processes in each section."
+            "Give the section relevant titles and provide details/facts/processes in each section.",
             "REMEMBER: you are writing for the New York Times, so the quality of the report is important.",
         ],
         add_to_system_prompt=dedent(
