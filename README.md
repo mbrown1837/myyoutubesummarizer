@@ -12,9 +12,14 @@ source ~/.venvs/aienv/bin/activate
 ### 2. Export your Groq API Key
 
 ```shell
-export GROQ_API_KEY=***
+export GROQ_API_KEY=*your_api_key*
 ```
-
+or
+### Use this Streamlit
+```shell
+# .streamlit/secrets.toml
+groq_api_key = "your_api_key"
+```
 ### 3. Install libraries
 
 ```shell
