@@ -4,10 +4,10 @@ from assistant import get_chunk_summarizer, get_video_summarizer
 
 st.set_page_config(
     page_title="Youtube Video Summaries",
-    page_icon=":orange_heart:",
+    page_icon=":blue_heart:",
 )
 st.title("Youtube Video Summaries powered by Groq")
-st.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
+st.markdown("##### :blue_heart: built using [phidata](https://github.com/phidatahq/phidata)")
 
 # Groq API key is still retrieved here for the Groq model (but not for YouTubeTools)
 groq_api_key = st.secrets["groq_api_key"]
