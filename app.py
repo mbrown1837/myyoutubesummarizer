@@ -9,7 +9,7 @@ st.set_page_config(
 st.title("Youtube Video Summaries powered by Groq")
 st.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
 
-# Get the Groq API key from secrets
+# Groq API key is still retrieved here for the Groq model (but not for YouTubeTools)
 groq_api_key = st.secrets["groq_api_key"]
 
 def main() -> None:
@@ -57,7 +57,7 @@ def main() -> None:
     # Process the video if URL is provided
     if "youtube_url" in st.session_state:
         _url = st.session_state["youtube_url"]
-        youtube_tools = YouTubeTools(api_key=groq_api_key, languages=["en"])
+        youtube_tools = YouTubeTools(languages=["en"])  # Remove api_key here
         video_captions = None
         video_summarizer = get_video_summarizer(model=llm_model, groq_api_key=groq_api_key)
 
@@ -80,7 +80,7 @@ def main() -> None:
             status.update(label="Captions processed", state="complete", expanded=False)
 
         if not video_captions:
-            st.write("Sorry could not parse video. Please try again or use a different video.")
+            st.write("Sorry, could not parse the video. Please try again or use a different video.")
             return
 
         # Chunk the captions for summarization
