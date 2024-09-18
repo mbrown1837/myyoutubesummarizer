@@ -7,14 +7,7 @@ st.set_page_config(
     page_icon=":blue_heart:",
 )
 st.title("Youtube Video Summaries powered by Groq")
-st.markdown("""
-    <div style="background-color:#f0f8ff; padding:10px; border-radius:10px;">
-        <h5 style="color:#1E90FF; text-align:center;">
-            <span style="font-size:24px;">💙</span> 
-            <b>Built with dedication by</b> 
-            <span style="color:#FFD700;">Hamid Shah 👑</span>
-        </h5>
-    </div>
+st.markdown("##### :blue_heart: built using [Hamid Shah👑]")
     """, unsafe_allow_html=True)
 
 # Groq API key is still retrieved here for the Groq model (but not for YouTubeTools)
