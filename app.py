@@ -8,7 +8,6 @@ st.set_page_config(
 )
 st.title("Youtube Video Summaries powered by Groq")
 st.markdown("##### :blue_heart: built using [Hamid Shah👑]")
-    """, unsafe_allow_html=True)
 
 # Groq API key is still retrieved here for the Groq model (but not for YouTubeTools)
 groq_api_key = st.secrets["groq_api_key"]
