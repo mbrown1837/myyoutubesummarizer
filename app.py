@@ -7,7 +7,7 @@ st.set_page_config(
     page_icon=":blue_heart:",
 )
 st.title("Youtube Video Summaries powered by Groq")
-st.markdown("##### 💙 Crafted with care by Hamid Shah 👑")
+st.markdown("##### Crafted with care by Hamid Shah 👑")
 
 # Groq API key is still retrieved here for the Groq model (but not for YouTubeTools)
 groq_api_key = st.secrets["groq_api_key"]
